@@ -8,21 +8,23 @@ mvd = 0
 
 src_list = os.listdir(path=path)
 
-print(f"Getting images in directory: {path}")
+print("------------")
+print(f"Getting files in directory: {path}")
 print("------------")
 
 for img in src_list:
-    full_path = path + img
-    cmd = f"mv {full_path} {dest}"
-    result = subprocess.run(
-        cmd,
-        shell=True,
-        capture_output=True,
-        text=True,
-    )
-    print(result.stderr)
-    print(f"moved {mvd}")
-    mvd += 1
-    break
-else:
-    print("Nothing found")
+    if file_substr in img:
+        full_path = path + img
+        cmd = f"move {full_path} {dest}"
+        result = subprocess.run(
+            cmd,
+            shell=True,
+            capture_output=True,
+            text=True,
+        )
+        print(result.stderr)
+        print(f"moved {mvd}")
+        if result != "The system cannot find the path specified.":
+            mvd += 1
+    else:
+        print("Nothing found")
