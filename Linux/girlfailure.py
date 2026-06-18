@@ -14,8 +14,8 @@ print("------------")
 
 for img in src_list:
     if file_substr in img:
-        full_path = path + img
-        cmd = f"move {full_path} {dest}"
+        full_path = f"{path}/{img}"
+        cmd = f"mv {full_path}/{dest}"
         result = subprocess.run(
             cmd,
             shell=True,
