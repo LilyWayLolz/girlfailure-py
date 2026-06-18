@@ -15,8 +15,8 @@ print(f"Getting images in directory: {path}")
 print("------------")
 
 for img in src_list:
-    full_path = path + img
-    cmd = f"move {full_path} {dest}"
+    full_path = path2 + img
+    cmd = f"move {full_path} {dest2}"
     result = subprocess.run(
         cmd,
         shell=True,
