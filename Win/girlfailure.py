@@ -16,12 +16,11 @@ print("------------")
 print(f"Getting files in directory: {path}")
 print("------------")
 
-print(src_list)
-
 for img in src_list:
     full_path = f"{path}\\{img}"
     cmd = f"move {full_path} {dest}"
     if file_substr in img:
+        print(f"moving {img} from {path} to {dest}")
         result = subprocess.run(
             cmd,
             shell=True,

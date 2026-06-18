@@ -13,9 +13,10 @@ print(f"Getting files in directory: {path}")
 print("------------")
 
 for img in src_list:
+    full_path = f"{path}/{img}"
+    cmd = f"mv {full_path}/{dest}"
     if file_substr in img:
-        full_path = f"{path}/{img}"
-        cmd = f"mv {full_path}/{dest}"
+        print(f"moving {img} from {path} to {dest}")
         result = subprocess.run(
             cmd,
             shell=True,
