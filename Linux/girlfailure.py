@@ -13,8 +13,8 @@ print(f"Getting files in directory: {path}")
 print("------------")
 
 for img in src_list:
-    full_path = f"{path}/{img}"
-    cmd = f"mv {full_path}/{dest}"
+    full_path = f"{path}{img}"
+    cmd = f"mv {full_path} {dest}"
     if file_substr in img:
         print(f"moving {img} from {path} to {dest}")
         result = subprocess.run(
@@ -24,8 +24,9 @@ for img in src_list:
             text=True,
         )
         print(result.stderr)
-        print(f"moved {mvd}")
         if result != "The system cannot find the path specified.":
             mvd += 1
     else:
         print("Nothing found")
+
+print(f"moved {mvd}")
